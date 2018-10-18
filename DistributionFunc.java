@@ -41,17 +41,25 @@ public static int rthPowerNum(int base, int r){
 
 public static int[] rthPowerDatabase(int power, int start, int end) {
 	int base = 1;
-	int first = start;
+	for(int i = 1; i <= start ; i++) {
+		if(rthPowerNum(base,power) < start) {
+			base++;
+		}
+		if(rthPowerNum(base,power) > start) {
+			i = start + 1;
+		}
+	}
 	int[] result = new int[end-start+1];
-	for(int i = 0; first <= end  ; i++) {
+	int bindex = 0;
+	for(int i = start; i <= end  ; i++) {
 		if (rthPowerNum(base,power) <= end && rthPowerNum(base,power) >= start) {
-		result[i] = rthPowerNum(base, power);
+		result[bindex] = rthPowerNum(base, power);
+		bindex++;
 		}
 		if (rthPowerNum(base,power) > end) {
 		i = end + 1;
 		}
 		base += 1;
-		first += 1;
 	}
 	int FnLength = 0;
 	for(int i = 0; i < result.length ; i++) {
@@ -66,7 +74,8 @@ public static int[] rthPowerDatabase(int power, int start, int end) {
 			answer[index] = result[i];
 			index++;
 		}
-	}			 
+	}
+
 	return answer;
 }
 
@@ -89,14 +98,16 @@ public static int[][] DistribFunc(int start, int group, int size, int power) {
 
 public static int DistribStat(int start, int group, int size, int power) {
 	int num = 0;
+	int counter = 0;
 	for(int i = 1; i <= group ; i++) {
 		int first = start + (i-1)*size;
 		int end  = i*size;
-		if (rthPowerCount(power,first,end) > 0) {
+		if (rthPowerCount(power,first,end) == 0) {
 			num++;
+			counter = i;
 		}
 	}
-	return num;	
+	return num ;	
 }
 
 public static boolean isPrime(int num) {
@@ -146,11 +157,13 @@ return pos;
 
 public static void main(String[] args){
 
-System.out.println(rthPowerNum(3,2));
-System.out.println(rthPowerCount(2,1,100));
-System.out.println(DistribStat(1,4,25,2));
+//System.out.println(rthPowerNum(3,2));
+System.out.println(rthPowerCount(2,141,150));
+System.out.println(DistribStat(1,1500,10,2));
+//PrintArray(DistribFunc(1,1500,10,2));
 System.out.println("The Number 97 is Prime? " + isPrime(97));
-printArray(rthPowerDatabase(2,4532,78376));
+printArray(rthPowerDatabase(2,141,150));
+//System.out.println(rthPowerDatabase(2,141,150));
 printArray(PrimeList(20,140));
 System.out.println("The Position of Prime 97 between 20 and 140 is: " + PrimePosition(20,140,97));
 }
