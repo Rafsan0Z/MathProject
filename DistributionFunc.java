@@ -76,13 +76,6 @@ public static int rthPowerCount(int power, int start, int end) {
 	return result.length;
 }
 
-//public static String  NormalDistribution(int a, int K, int N, int r) {
-	//int range = K*N - a;
-	//int[] database = rthPowerDatabase(r,range);
-	//int result = database.length * 100;
-	//return "" + (result / (K*N - a)) + "%" ;
-//}
-
 public static int[][] DistribFunc(int start, int group, int size, int power) {
 	int end = start + group*size;
 	int[][] result = new int[group][];
@@ -95,17 +88,7 @@ public static int[][] DistribFunc(int start, int group, int size, int power) {
 }
 
 public static int DistribStat(int start, int group, int size, int power) {
-//	int[][] database = DistribFunc(start,group,size,power);
 	int num = 0;
-//	for (int i =1 ; i <= group; i++) {
-//		if (i == 1 && database[0].length > 0) {
-//			num += 1;
-//		}
-//		else if ((database[i-1].length - database[i-2].length) > 0){
-//			num += 1;
-//		}
-//	}
-//	return num;
 	for(int i = 1; i <= group ; i++) {
 		int first = start + (i-1)*size;
 		int end  = i*size;
@@ -163,7 +146,6 @@ return pos;
 
 public static void main(String[] args){
 
-//System.out.println(NormalDistribution(0,10,5,2));
 System.out.println(rthPowerNum(3,2));
 System.out.println(rthPowerCount(2,1,100));
 System.out.println(DistribStat(1,4,25,2));
@@ -171,10 +153,6 @@ System.out.println("The Number 97 is Prime? " + isPrime(97));
 printArray(rthPowerDatabase(2,4532,78376));
 printArray(PrimeList(20,140));
 System.out.println("The Position of Prime 97 between 20 and 140 is: " + PrimePosition(20,140,97));
-//System.out.println(SubdivDistribution(0,100,10,10,3));
-//printArray(RangedRthPowerDatabase(2,11,50));
-//PrintArray(DistribFunc(1,100,5,2));
-//System.out.println(DistribStat(1,100,10,2));
 }
 
 }
