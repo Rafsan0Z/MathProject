@@ -93,8 +93,8 @@ public static double DistribStat(int start, int group, int size, int power) {
 	int num = 0;
 	int total = start + group*size - 1;
 	for(int i = 1; i <= group ; i++) {
-		int first = start + (i-1)*size;
-		int end  = i*size;
+		int first = start + (i-1)*size + 1;
+		int end  = start + i*size;
 		if (rthPowerCount(power,first,end) > 0) {
 			num++;
 		}
@@ -170,9 +170,20 @@ public static double DistribStat(int start, int group, int size, int power) {
 
 public static void main(String[] args){
 
+int start = Integer.parseInt(args[0]);
+int groupS = Integer.parseInt(args[1]);
+int groupE = Integer.parseInt(args[3]);
+int size = Integer.parseInt(args[2]);
+int power = Integer.parseInt(args[4]);
+//String variable = args[5];
+//int factor = Integer.parseInt(args[4]);
 //System.out.println(rthPowerNum(3,2));
 //System.out.println(rthPowerCount(2,141,150));
-System.out.println(DistribStat(1,99999999,99999999,2));
+for(int i = groupS; i <= groupE; i++) {
+	size++;
+	start++;
+	System.out.println(DistribStat(start,i,size,power));
+}
 //PrintArray(DistribFunc(1,1500,10,2));
 //System.out.println("The Number 9 is Prime? " + isPrime(9));
 //printArray(rthPowerDatabase(2,141,150));
