@@ -1,8 +1,8 @@
-
+import javafx.application.Application;
 public class DistributionFunc {
 
-public static void printArray(int[] ary) {
- String result = "["; 
+public static void printArray(double[] ary) {
+ String result = "[";
  for (int i = 0; i < ary.length ; i++) {
   result += " " + ary[i];
   if (i != ary.length - 1) {
@@ -85,7 +85,7 @@ public static int rthPowerCount(int power, int start, int end) {
 //		int first = (i-1)*size + 1;
 //		int last = i*size;
 //		result[i-1] = rthPowerDatabase(power,first,last);
-//	} 
+//	}
 //	return result;
 //}
 
@@ -103,7 +103,7 @@ public static double DistribStat(int start, int group, int size, int power) {
 }
 
 //public static int MaxNum(int n, int size, int start, int first) {
-	
+
 //}
 
 
@@ -154,7 +154,7 @@ public static double DistribStat(int start, int group, int size, int power) {
 //	}
 //}
 //	return ((double)num / (double)group)*100;
-//} 
+//}
 
 //public static int PrimePosition(int start,int end,int prime) {
 //int[] database = PrimeList(start,end);
@@ -168,16 +168,24 @@ public static double DistribStat(int start, int group, int size, int power) {
 //return pos;
 //}
 
-public static void main(String[] args){
+public static void main(String[][] args){
+  double[] result = new double[args[0].length];
+for(int i = 0; i < args.length; i++) {
+  int start = Integer.parseInt(args[0][i]);
+  int group = Integer.parseInt(args[1][i]);
+  int size = Integer.parseInt(args[2][i]);
+  result[i] = DistribStat(start,group,size,2);
+}
+
 
 //System.out.println(rthPowerNum(3,2));
 //System.out.println(rthPowerCount(2,141,150));
-System.out.println(DistribStat(1,99999999,99999999,2));
+//System.out.println(DistribStat(start,group,size,2));
 //PrintArray(DistribFunc(1,1500,10,2));
 //System.out.println("The Number 9 is Prime? " + isPrime(9));
 //printArray(rthPowerDatabase(2,141,150));
 //System.out.println(PrimeChance(1,50,2));
-//printArray(PrimeList(20,140));
+printArray(result);
 //System.out.println("The Position of Prime 97 between 20 and 140 is: " + PrimePosition(20,140,97));
 }
 
