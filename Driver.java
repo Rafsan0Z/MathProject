@@ -22,15 +22,20 @@ public class Driver{
   } catch(IOException e) {}
   }
 
-  public static void customLimitTest(int start,int group, int size, int pow, int iterations, int[] increments) {
+  public static void customLimitTest(int start,int group, int size, int pow, int iterations, int[] increments, File XP) {
+    try{
+      BufferedWriter draw = new BufferedWriter(new FileWriter(XP));
       Power cusLimittest = new Power(start,size,group,pow);
       for(int i=0; i < iterations; i++) {
         cusLimittest.DistribStat();
         start += increments[0];
         size += increments[1];
         group += increments[2];
+        draw.write("Write custom things here" + "\n");
       }
-  }
+      draw.close();
+    } catch(IOException e) {}
+    }
 
   public static void main(String[] args) throws IOException {
 
@@ -62,7 +67,7 @@ public class Driver{
         System.out.println("The result has been added!");
         System.exit(1);
       }
-      System.out.println("No Test! Chose different file Name and retest"); 
+      System.out.println("No Test! Chose different file Name and retest");
       System.out.println("----------END----------");
       System.exit(1);
     }
@@ -97,7 +102,7 @@ public class Driver{
           System.out.println("Input the number of iterations");
           int iter = Integer.parseInt(input.nextLine());
           int[] values = {startIncr,sizeIncr,groupIncr};
-          customLimitTest(start,size,num,pow,iter,values);
+          customLimitTest(start,size,num,pow,iter,values,file);
         }
         else {
           System.out.println("Input the number of iterations");
