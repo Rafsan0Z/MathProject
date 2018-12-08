@@ -10,11 +10,16 @@ import java.util.Scanner;
 
 public class Driver{
 
-  public static void standardLimitTest(int start, int group, int size, int pow, int iterations) {
+  public static void standardLimitTest(int start, int group, int size, int pow, int iterations, File XP) {
+    try{
+    BufferedWriter draw = new BufferedWriter(new FileWriter(XP));
     Power limittest = new Power(start,size,group,pow);
     for(int i = 0; i < iterations; i++) {
       limittest.DistribStat();
+      draw.write("We will write something here" + "\n");
     }
+    draw.close();
+  } catch(IOException e) {}
   }
 
   public static void customLimitTest(int start,int group, int size, int pow, int iterations, int[] increments) {
@@ -90,7 +95,7 @@ public class Driver{
         else {
           System.out.println("Input the number of iterations");
           int iter = Integer.parseInt(input.nextLine());
-          standardLimitTest(start,size,num,pow,iter);
+          standardLimitTest(start,size,num,pow,iter,file);
         }
       }
       System.out.println("Tests Successful! Visit Tests Directory for results!");
