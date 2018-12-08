@@ -42,4 +42,8 @@ public class Power{
     }
     return result;
   }
+
+  public static void DistribStat() {
+    
+  }
 }

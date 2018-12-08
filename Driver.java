@@ -10,9 +10,35 @@ import java.util.Scanner;
 
 public class Driver{
 
+  public static void standardLimitTest(int start, int group, int size, int pow, int iterations) {
+    Power limittest = new Power(start,size,group,pow);
+    for(int i = 0; i < iterations; i++) {
+      limittest.DistribStat();
+    }
+  }
+
+  public static void customLimitTest(int start,int group, int size, int pow, int iterations, int[] increments) {
+      Power cusLimittest = new Power(start,size,group,pow);
+      for(int i=0; i < iterations; i++) {
+        cusLimittest.DistribStat();
+        start += increments[0];
+        size += increments[1];
+        group += increments[2];
+      }
+  }
+
   public static void main(String[] args) throws IOException {
 
+    System.out.println("--------------------------------------------!Welcome!---------------------------------------------");
+    System.out.println("----------------------------------!Granular Distribution Tester!---------------------------------------------");
+    System.out.println("This version of the program is limited to the terminal. For this reason, it is highly recommended that you read the user manuel before you begin testing! Write 'go to manuel' below to do so. Write 'continue' otherwise! ");
     Scanner input = new Scanner(System.in);
+    String refer = input.nextLine();
+    if(refer.equals("go to manuel")) {
+      ProcessBuilder pb = new ProcessBuilder("Notepad.exe" , "Manuel");
+      pb.start();
+      System.exit(1);
+    }
     System.out.println("Input test type below. Not case sensitive");
     String type = input.nextLine();
     System.out.println("Input the name of the file to store test results");
@@ -44,14 +70,36 @@ public class Driver{
       System.out.println("Input degree");
       int pow = Integer.parseInt(input.nextLine());
       System.out.println("--------------------");
-      System.out.println("What style of test do you want: Press '1' for regular test or Press '2' for limit test!")
-      int style = Integer.parseInt(input.nextLine());
-      Power test = new Power(0,10,10,2);
-      System.out.println("Tests Successful! Visit Tests Directory for results!")
+      System.out.println("What style of test do you want: Press '1' for regular test or Press '2' for limit test!");
+      String style = input.nextLine();
+      if(style.equals("2")) {
+        System.out.println("What type of limit test do you want? Press '1' for standard limit test or Press '2' for custom limit test!");
+        String styletype = input.nextLine();
+        if(styletype.equals("2")) {
+          System.out.println("Input the increment for size");
+          int sizeIncr = Integer.parseInt(input.nextLine());
+          System.out.println("Input the increment for start");
+          int startIncr = Integer.parseInt(input.nextLine());
+          System.out.println("Input the increment for group");
+          int groupIncr = Integer.parseInt(input.nextLine());
+          System.out.println("Input the number of iterations");
+          int iter = Integer.parseInt(input.nextLine());
+          int[] values = {startIncr,sizeIncr,groupIncr};
+          customLimitTest(start,size,num,pow,iter,values);
+        }
+        else {
+          System.out.println("Input the number of iterations");
+          int iter = Integer.parseInt(input.nextLine());
+          standardLimitTest(start,size,num,pow,iter);
+        }
+      }
+      System.out.println("Tests Successful! Visit Tests Directory for results!");
       input.close();
     }
     else if(type.equals("prime")) {
-
+      System.out.println("Test is not yet available");
+      System.out.println("----------END----------");
+      System.exit(1);
     }
     else {
       System.out.println("Test not found!");
