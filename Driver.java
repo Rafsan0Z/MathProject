@@ -54,21 +54,22 @@ public class Driver{
     String path = bridge + TestFile;
     File file = new File(path);
 
-    try{
-      file.createNewFile();
-      System.out.println("File Created!");
-      System.out.println("--------------------");
-    } catch(IOException e) {
+    if(file.exists()) {
       System.out.println("File already exists");
-/*      System.out.println("Do you want to add results to an existing file? If So then Write 'Yes'");
+      System.out.println("Do you want to add results to an existing file? If So then Write 'Yes'");
       String answer = input.nextLine();
       if(answer.equals("Yes")) {
         System.out.println("The result has been added!");
         System.exit(1);
       }
-      System.out.println("No Test! Chose different file Name and retest"); */
+      System.out.println("No Test! Chose different file Name and retest"); 
       System.out.println("----------END----------");
       System.exit(1);
+    }
+    else {
+      file.createNewFile();
+      System.out.println("File Created!");
+      System.out.println("--------------------");
     }
 
       if(type.equals("power")) {
