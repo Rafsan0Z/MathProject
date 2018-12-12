@@ -1,17 +1,17 @@
 import java.util.ArrayList;
 public class Power implements Groups{
-  private int power;
-  private int start,group,size;
+  private int r;
+  private int s,g,n;
 
-  public Power(int s, int g, int n, int r) {
-    power = r;
-    start = s;
-    group = g;
-    size = n;
+  public Power(int start, int group, int size, int power) {
+    r = power;
+    s = start;
+    g = group;
+    n = size;
  //   DistribStat(s,g,n);
   }
 
-  public int Num(int base, int r) {
+  public int Num(int base) {
       int result = 1;
       for(int i = 1; i <= r; i++) {
         result = result * base;
@@ -34,7 +34,7 @@ public class Power implements Groups{
     int base = (int) data;
     ArrayList<Integer> result = new ArrayList<Integer>();
     for(int i = start; i <= end; i++) {
-      int Test = Num(base,power);
+      int Test = Num(base);
       if(Element(Test,start,end)) {
         result.add(Test);
       }
@@ -43,7 +43,7 @@ public class Power implements Groups{
     return result;
   }
 
-  public double DistribStat(int start, int group, int size) {
+  public double DistribStat(int start, int size, int group) {
     int num = 0;
     for(int i = 1; i <= group; i++) {
       int first = start + (i-1)*size + 1;
