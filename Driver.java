@@ -7,16 +7,20 @@ import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.time.LocalTime;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Driver{
 
   public static void standardLimitTest(int start, int group, int size, int pow, int iterations, File XP) {
     try{
     BufferedWriter draw = new BufferedWriter(new FileWriter(XP));
-    Power limittest = new Power(start,size,group,pow);
     for(int i = 0; i < iterations; i++) {
-      limittest.DistribStat();
-      draw.write("We will write something here" + "\n");
+      Power limittest = new Power(start,size,group,pow);
+      double result = limittest.DistribStat(start,size,group);
+      draw.write("We will write something here" + result + "\n");
+      size++;
+      start++;
+      group++;
     }
     draw.close();
   } catch(IOException e) {}
@@ -27,7 +31,7 @@ public class Driver{
       BufferedWriter draw = new BufferedWriter(new FileWriter(XP));
       Power cusLimittest = new Power(start,size,group,pow);
       for(int i=0; i < iterations; i++) {
-        cusLimittest.DistribStat();
+//        cusLimittest.DistribStat();
         start += increments[0];
         size += increments[1];
         group += increments[2];

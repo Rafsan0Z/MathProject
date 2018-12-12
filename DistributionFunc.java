@@ -168,14 +168,8 @@ public static double DistribStat(int start, int group, int size, int power) {
 //return pos;
 //}
 
-public static void main(String[][] args){
-  double[] result = new double[args[0].length];
-for(int i = 0; i < args.length; i++) {
-  int start = Integer.parseInt(args[0][i]);
-  int group = Integer.parseInt(args[1][i]);
-  int size = Integer.parseInt(args[2][i]);
-  result[i] = DistribStat(start,group,size,2);
-}
+public static void main(String[] args){
+
 
 
 int start = Integer.parseInt(args[0]);
@@ -187,20 +181,16 @@ int power = Integer.parseInt(args[4]);
 //int factor = Integer.parseInt(args[4]);
 //System.out.println(rthPowerNum(3,2));
 //System.out.println(rthPowerCount(2,141,150));
-<<<<<<< HEAD
 //System.out.println(DistribStat(start,group,size,2));
-=======
-for(int i = groupS; i <= groupE; i++) {
-	size++;
-	start++;
+for(int i = size; i <= groupE; i++) {
+  start++;
+  size++;
 	System.out.println(DistribStat(start,i,size,power));
 }
->>>>>>> 3e31768049b16ecd0459fb1713ebca7b5a90a724
 //PrintArray(DistribFunc(1,1500,10,2));
 //System.out.println("The Number 9 is Prime? " + isPrime(9));
 //printArray(rthPowerDatabase(2,141,150));
 //System.out.println(PrimeChance(1,50,2));
-printArray(result);
 //System.out.println("The Position of Prime 97 between 20 and 140 is: " + PrimePosition(20,140,97));
 }
 
