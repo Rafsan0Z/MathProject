@@ -43,13 +43,13 @@ public class Power implements Groups{
     return result;
   }
 
-  public double DistribStat(int start, int size, int group) {
+  public double DistribStat() {
     int num = 0;
-    for(int i = 1; i <= group; i++) {
-      int first = start + (i-1)*size + 1;
-      int end = start + i*size;
+    for(int i = 1; i <= g; i++) {
+      int first = s + (i-1)*n + 1;
+      int end = s + i*n;
       if(count(first,end) > 0) {num++;}
     }
-    return ((double)num / (double)group)*100;
+    return ((double)num / (double)g)*100;
   }
 }

@@ -16,7 +16,7 @@ public class Driver{
     BufferedWriter draw = new BufferedWriter(new FileWriter(XP));
     for(int i = 0; i < iterations; i++) {
       Power limittest = new Power(start,group,size,pow);
-      double result = limittest.DistribStat(start,size,group);
+      double result = limittest.DistribStat();
       draw.write("We will write something here" + result + "\n");
       size++;
       start++;
@@ -123,6 +123,7 @@ public class Driver{
     else if(type.equals("prime")) {
       System.out.println("Test is not yet available");
       System.out.println("----------END----------");
+      file.delete();
       System.exit(1);
     }
     else {
