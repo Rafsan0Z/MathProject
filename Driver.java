@@ -15,7 +15,7 @@ public class Driver{
     try{
     BufferedWriter draw = new BufferedWriter(new FileWriter(XP));
     for(int i = 0; i < iterations; i++) {
-      Power limittest = new Power(start,size,group,pow);
+      Power limittest = new Power(start,group,size,pow);
       double result = limittest.DistribStat(start,size,group);
       draw.write("We will write something here" + result + "\n");
       size++;
@@ -111,8 +111,11 @@ public class Driver{
         else {
           System.out.println("Input the number of iterations");
           int iter = Integer.parseInt(input.nextLine());
-          standardLimitTest(start,size,num,pow,iter,file);
+          standardLimitTest(start,num,size,pow,iter,file);
         }
+      }
+      else{
+//        regularTest(start,size,num,pow);
       }
       System.out.println("Tests Successful! Visit Tests Directory for results!");
       input.close();
