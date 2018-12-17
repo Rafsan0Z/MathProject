@@ -31,14 +31,24 @@ public class Driver{
       BufferedWriter draw = new BufferedWriter(new FileWriter(XP));
       Power cusLimittest = new Power(start,size,group,pow);
       for(int i=0; i < iterations; i++) {
-//        cusLimittest.DistribStat();
+        double result = cusLimittest.DistribStat(start,group,size,pow);
         start += increments[0];
         size += increments[1];
         group += increments[2];
-        draw.write("Write custom things here" + "\n");
+        draw.write("Write custom things here" + result + "\n");
       }
       draw.close();
     } catch(IOException e) {}
+    }
+
+    public static void regularTest(int start, int group, int size, int pow, File XP){
+      try{
+        BufferedWriter draw = new BufferedWriter(new FileWriter(XP));
+        Power regtest = new Power(start,size,group,pow);
+        double result = regtest.DistribStat(start,group,size,pow);
+        draw.write("Write regular things here" + result + "\n");
+        draw.close();
+      } catch(IOException e){}
     }
 
   public static void main(String[] args) throws IOException {
@@ -115,7 +125,7 @@ public class Driver{
         }
       }
       else{
-//        regularTest(start,size,num,pow);
+        regularTest(start,size,num,pow);
       }
       System.out.println("Tests Successful! Visit Tests Directory for results!");
       input.close();
