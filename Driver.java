@@ -31,7 +31,7 @@ public class Driver{
       BufferedWriter draw = new BufferedWriter(new FileWriter(XP));
       Power cusLimittest = new Power(start,size,group,pow);
       for(int i=0; i < iterations; i++) {
-        double result = cusLimittest.DistribStat(start,group,size,pow);
+        double result = cusLimittest.DistribStat();
         start += increments[0];
         size += increments[1];
         group += increments[2];
@@ -45,7 +45,7 @@ public class Driver{
       try{
         BufferedWriter draw = new BufferedWriter(new FileWriter(XP));
         Power regtest = new Power(start,size,group,pow);
-        double result = regtest.DistribStat(start,group,size,pow);
+        double result = regtest.DistribStat();
         draw.write("Write regular things here" + result + "\n");
         draw.close();
       } catch(IOException e){}
@@ -125,7 +125,7 @@ public class Driver{
         }
       }
       else{
-        regularTest(start,size,num,pow);
+        regularTest(start,size,num,pow,file);
       }
       System.out.println("Tests Successful! Visit Tests Directory for results!");
       input.close();
