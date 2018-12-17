@@ -20,7 +20,7 @@ public class Power implements Groups{
   }
 
   public int count(int start, int end) {
-    ArrayList<Integer> result = database(start, end);
+    int[] result = database(start, end);
     return result.size();
   }
 
@@ -29,18 +29,37 @@ public class Power implements Groups{
     else {return false;}
   }
 
-  public ArrayList<Integer> database(int start, int end) {
+  public int[] database(int start, int end) {
     double data = Math.sqrt(start);
-    int base = (int) data;
-    ArrayList<Integer> result = new ArrayList<Integer>();
-    for(int i = start; i <= end; i++) {
-      int Test = Num(base);
-      if(Element(Test,start,end)) {
-        result.add(Test);
-      }
-      base++;
-    }
-    return result;
+  	int base = (int)data;
+  	int[] result = new int[end-start+1];
+  	int bindex = 0;
+  	for(int i = start; i <= end  ; i++) {
+  		if (Num(base,r) <= end && Num(base,r) >= start) {
+  		result[bindex] = Num(base, r);
+  		bindex++;
+  		}
+  		if (Num(base,r) > end) {
+  		i = end + 1;
+  		}
+  		base += 1;
+  	}
+  	int FnLength = 0;
+  	for(int i = 0; i < result.length ; i++) {
+  		if (result[i] != 0) {
+  			FnLength++;
+  		}
+  	}
+  	int[] answer =  new int[FnLength];
+  	int index = 0;
+  	for(int i = 0; i < result.length ; i++) {
+  		if (result[i] != 0) {
+  			answer[index] = result[i];
+  			index++;
+  		}
+  	}
+
+  	return answer;
   }
 
   public double DistribStat() {
