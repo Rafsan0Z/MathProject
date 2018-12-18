@@ -8,7 +8,6 @@ public class Power implements Groups{
     s = start;
     g = group;
     n = size;
- //   DistribStat(s,g,n);
   }
 
   public int Num(int base) {
@@ -70,5 +69,17 @@ public class Power implements Groups{
       if(count(first,end) > 0) {num++;}
     }
     return ((double)num / (double)g)*100;
+  }
+
+  public String IntervalHops(int r1, int rn){
+    String result = "";
+    double data = Math.sqrt(s);
+    int base = (int)data;
+    int gapCounter = 0;
+    for(int i = base; i >= rn*rn; i = i + n) {
+      result += "This is the gap for perfect square " + r1*r1 + "and " + rn*rn + "is: " + gapCounter "." + "\n"; 
+      gapCounter = 0;
+    }
+    return result;
   }
 }
