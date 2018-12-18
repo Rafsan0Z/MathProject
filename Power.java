@@ -73,13 +73,15 @@ public class Power implements Groups{
 
   public String IntervalHops(int r1, int rn){
     String result = "";
-    double data = Math.sqrt(s);
-    int base = (int)data;
-    int gapCounter = 0;
-    for(int i = base; i >= rn*rn; i = i + n) {
-      result += "This is the gap for perfect square " + r1*r1 + "and " + rn*rn + "is: " + gapCounter "." + "\n"; 
-      gapCounter = 0;
-    }
-    return result;
+      double data = Math.sqrt(s);
+      int base = (int)data;
+      int gapCounter = 0;
+      for(int i = base; i <= rn; i++) {
+        double count = (2*i + 1) / n;
+        gapCounter = (int)count;
+        result += "This is the gap for perfect square " + i*i + "and " + (i+1)*(i+1) + "is: " + gapCounter + "." + "\n";
+        gapCounter = 0;
+      }
+      return result;
   }
 }
