@@ -172,20 +172,19 @@ public static void main(String[] args){
 
 
 
-int start = Integer.parseInt(args[0]);
-int groupS = Integer.parseInt(args[1]);
-int groupE = Integer.parseInt(args[3]);
-int size = Integer.parseInt(args[2]);
-int power = Integer.parseInt(args[4]);
+int start = 0;
+int group = 0;
+int size = 0;
 //String variable = args[5];
 //int factor = Integer.parseInt(args[4]);
 //System.out.println(rthPowerNum(3,2));
 //System.out.println(rthPowerCount(2,141,150));
 //System.out.println(DistribStat(start,group,size,2));
-for(int i = size; i <= groupE; i++) {
-  start++;
-  size++;
-	System.out.println(DistribStat(start,i,size,power));
+for(int i = 1; i <= 100; i++) {
+  start = start + i*3;
+  size = size + i*3;
+  group = group + i*3;
+	System.out.println(DistribStat(start,group,size,3));
 }
 //PrintArray(DistribFunc(1,1500,10,2));
 //System.out.println("The Number 9 is Prime? " + isPrime(9));
